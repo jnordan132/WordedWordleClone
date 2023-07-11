@@ -26,3 +26,31 @@ button {
   border: none;
 } */
 
+.infoRow {
+  display: flex;
+}
+
+.box {
+  border: 2px solid rgb(174, 174, 174);
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  margin: 1px 1px;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+}
+
+.correct {
+  background-color: green;
+}
+
+.needed {
+  background-color: rgb(230, 167, 42);
+}
+
+.wrong {
+  background-color: rgb(174, 174, 174);
+}
+
+
