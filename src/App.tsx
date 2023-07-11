@@ -1,7 +1,7 @@
 import "./App.css";
-import Header from "./components/Header/index";
-import Grid from "./components/Grid/index";
-import Board from "./components/Board/index";
+import Header from "./components/Header";
+import Grid from "./components/Grid";
+import Board from "./components/Board";
 
 function App() {
   return (

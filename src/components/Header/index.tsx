@@ -1,4 +1,6 @@
-import { BsInfoCircle, BsFillBarChartFill } from "react-icons/bs";
+import InfoModal from "../InfoModal";
+import StatsModal from "../StatsModal";
+
 
 function Header() {
   return (
@@ -6,10 +8,10 @@ function Header() {
       <h1>Worded</h1>
       <nav>
         <a>
-          <BsInfoCircle />
+          <InfoModal />
         </a>
         <a>
-          <BsFillBarChartFill />
+          <StatsModal />
         </a>
       </nav>
     </header>
