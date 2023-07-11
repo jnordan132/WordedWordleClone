@@ -53,27 +53,27 @@ function InfoModal() {
             </p>
             <h3>Examples</h3>
             <div className="infoRow">
-              <div className="box correct">W</div>
-              <div className="box">E</div>
-              <div className="box">A</div>
-              <div className="box">R</div>
-              <div className="box">Y</div>
+              <div className="infoBox correct">W</div>
+              <div className="infoBox">E</div>
+              <div className="infoBox">A</div>
+              <div className="infoBox">R</div>
+              <div className="infoBox">Y</div>
             </div>
             <p>W is in the word and in the correct spot.</p>
             <div className="infoRow">
-              <div className="box">P</div>
-              <div className="box needed">I</div>
-              <div className="box">L</div>
-              <div className="box">O</div>
-              <div className="box">T</div>
+              <div className="infoBox">P</div>
+              <div className="infoBox needed">I</div>
+              <div className="infoBox">L</div>
+              <div className="infoBox">O</div>
+              <div className="infoBox">T</div>
             </div>
             <p>I is in the word but in the wrong spot.</p>
             <div className="infoRow">
-              <div className="box">V</div>
-              <div className="box">A</div>
-              <div className="box">G</div>
-              <div className="box wrong">U</div>
-              <div className="box">E</div>
+              <div className="infoBox">V</div>
+              <div className="infoBox">A</div>
+              <div className="infoBox">G</div>
+              <div className="infoBox wrong">U</div>
+              <div className="infoBox">E</div>
             </div>
             <p>U is not in the word in any spot.</p>
           </section>

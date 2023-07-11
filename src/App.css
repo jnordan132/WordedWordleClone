@@ -36,7 +36,7 @@ button:hover {
   margin-left: auto;
 }
 
-.box {
+.infoBox {
   border: 2px solid rgb(174, 174, 174);
   border-radius: 2px;
   padding: 5px;
@@ -66,4 +66,21 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }
 
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  border: 2px solid rgb(128, 128, 128);
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 205%;
+  margin: 3px 3px;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+}
 
