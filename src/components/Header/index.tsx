@@ -6,6 +6,7 @@ function Header() {
   return (
     <header>
       <h1>Worded</h1>
+      <br />
       <nav>
         <a>
           <InfoModal />

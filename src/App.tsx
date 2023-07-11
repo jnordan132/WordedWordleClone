@@ -7,8 +7,10 @@ function App() {
   return (
     <>
       <Header />
+      <br />
       <main>
         <Grid />
+        <br />
         <Board />
       </main>
     </>

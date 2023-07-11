@@ -84,3 +84,37 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
   text-align: center;
 }
 
+.boardRow {
+  display: flex;
+  justify-content: center;
+}
+
+.key {
+  color: white;
+  background-color: grey;
+  margin: 3px;
+  width: 40px;
+  height: 50px;
+  border-radius: 4px;
+  font-size: 150%;
+}
+
+.key:hover {
+  cursor: pointer;
+}
+
+.key p {
+  margin-top: 7px;
+  font-weight: bold;
+}
+
+.util {
+  width: 65px;
+  font-size: 100%;
+}
+
+.util p {
+  margin-top: 14px;
+}
+
+
