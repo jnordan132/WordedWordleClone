@@ -12,20 +12,18 @@ function InfoModal() {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       color: "white",
-      background: "rgb(48, 48, 48)"
+      background: "rgb(48, 48, 48)",
+      width: "40%",
+      display: "flex",
+      flexDirection: "column",
+      textAlign: "center"
     },
   };
 
-  let subtitle: any;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = "white";
-    subtitle.style.color = "white";
   }
 
   function closeModal() {
@@ -34,26 +32,26 @@ function InfoModal() {
 
   return (
     <>
-      <div className="modal">
+      <div>
         <button onClick={openModal}>
           <BsInfoCircle />
         </button>
-        <Modal
+        <Modal 
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Information Modal"
         >
-          <button onClick={closeModal}>
+          <button className="closeBtn" onClick={closeModal}>
             <BsXCircle />
           </button>
           <section>
-            <h5>How to play</h5>
+            <h2>How to play</h2>
             <p>
               Guess the WORDED in 6 tries. After each guess, the color of the
               tiles will change to show how close your guess was to the word.
             </p>
+            <h3>Examples</h3>
             <div className="infoRow">
               <div className="box correct">W</div>
               <div className="box">E</div>
@@ -78,6 +76,10 @@ function InfoModal() {
               <div className="box">E</div>
             </div>
             <p>U is not in the word in any spot.</p>
+          </section>
+          <section>
+          <h2>Credit</h2>
+          <p>Thank you to the original <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> for making this project possible!</p>
           </section>
         </Modal>
       </div>
