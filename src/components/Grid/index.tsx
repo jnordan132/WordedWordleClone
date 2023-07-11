@@ -1,11 +1,9 @@
 function Grid() {
-  
+  return (
+    <section>
+      <h1>Grid goes here</h1>
+    </section>
+  );
+}
 
-    return (
-      <>
-        <h1>Grid goes here</h1>
-      </>
-    )
-  }
-  
-  export default Grid;
+export default Grid;

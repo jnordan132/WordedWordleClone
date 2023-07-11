@@ -1,11 +1,9 @@
 function Board() {
-  
+  return (
+    <section>
+      <h1>Board goes here</h1>
+    </section>
+  );
+}
 
-    return (
-      <>
-        <h1>Board goes here</h1>
-      </>
-    )
-  }
-  
-  export default Board;
+export default Board;

@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import Header from "./components/Header/index";
 import Grid from "./components/Grid/index";
 import Board from "./components/Board/index";
@@ -7,10 +7,12 @@ function App() {
   return (
     <>
       <Header />
-      <Grid />
-      <Board />
+      <main>
+        <Grid />
+        <Board />
+      </main>
     </>
-  )
+  );
 }
 
 export default App;
