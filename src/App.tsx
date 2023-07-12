@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
@@ -13,7 +13,13 @@ function App() {
     position: 0,
   });
 
+  const [newSet, setNewSet] = useState(new Set());
+
   const correctWord = "RIGHT";
+
+  useEffect(() => {
+    generateWordArr().then((words) => setNewSet(words.newSet));
+  });
 
   const onSelect = (keyValue) => {
     const currentBoard = [...board];
@@ -40,7 +46,18 @@ function App() {
 
   const onEnter = () => {
     if (currentAttempt.position !== 5) return;
-    setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
+
+    let currentWord = "";
+    for (let i = 0; i < 5; i++) {
+      currentWord += board[currentAttempt.attempt][i];
+    }
+    console.log(currentWord);
+    console.log(newSet);
+    if (newSet.has(currentWord.toUpperCase())) {
+      setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
+    } else {
+      alert("Word Not Found");
+    }
   };
   return (
     <>

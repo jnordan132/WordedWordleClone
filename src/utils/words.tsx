@@ -13,10 +13,10 @@ export const generateWordArr = async () => {
   let newSet;
   await fetch(wordBank)
     .then((res) => {
-      res.text();
+      return res.text();
     })
     .then((res) => {
-      const wordArr = res.split("\n");
+      const wordArr = res.split("\r\n");
       newSet = new Set(wordArr);
     });
 
