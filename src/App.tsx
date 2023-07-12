@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
-import { wordLayout } from "./utils/words";
+import { wordLayout, generateWordArr } from "./utils/words";
 export const AppContext = createContext();
 
 function App() {
