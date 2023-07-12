@@ -13,6 +13,8 @@ function App() {
     position: 0,
   });
 
+  const correctWord = "RIGHT";
+
   const onSelect = (keyValue) => {
     const currentBoard = [...board];
     if (currentAttempt.attempt > 5) return;
@@ -54,6 +56,7 @@ function App() {
             onSelect,
             onDelete,
             onEnter,
+            correctWord,
           }}
         >
           <Grid />

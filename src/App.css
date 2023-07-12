@@ -48,17 +48,17 @@ button:hover {
   text-align: center;
 }
 
-.correct {
+#correct {
   background-color: green;
   border: 2px solid green;
 }
 
-.needed {
+#needed {
   background-color: rgb(230, 167, 42);
   border: 2px solid rgb(230, 167, 42);
 }
 
-.wrong {
+#wrong {
   background-color: rgb(174, 174, 174);
 }
 
@@ -73,7 +73,7 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
 }
 
 .box {
-  border: 2px solid rgb(128, 128, 128);
+  border: 2px solid rgb(174, 174, 174);
   border-radius: 2px;
   padding: 5px;
   font-weight: bold;

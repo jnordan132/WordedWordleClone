@@ -16,7 +16,7 @@ function InfoModal() {
       width: "40%",
       display: "flex",
       flexDirection: "column",
-      textAlign: "center"
+      textAlign: "center",
     },
   };
 
@@ -36,7 +36,7 @@ function InfoModal() {
         <button onClick={openModal}>
           <BsInfoCircle />
         </button>
-        <Modal 
+        <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
@@ -53,7 +53,9 @@ function InfoModal() {
             </p>
             <h3>Examples</h3>
             <div className="infoRow">
-              <div className="infoBox correct">W</div>
+              <div className="infoBox" id="correct">
+                W
+              </div>
               <div className="infoBox">E</div>
               <div className="infoBox">A</div>
               <div className="infoBox">R</div>
@@ -62,7 +64,9 @@ function InfoModal() {
             <p>W is in the word and in the correct spot.</p>
             <div className="infoRow">
               <div className="infoBox">P</div>
-              <div className="infoBox needed">I</div>
+              <div className="infoBox" id="needed">
+                I
+              </div>
               <div className="infoBox">L</div>
               <div className="infoBox">O</div>
               <div className="infoBox">T</div>
@@ -72,14 +76,22 @@ function InfoModal() {
               <div className="infoBox">V</div>
               <div className="infoBox">A</div>
               <div className="infoBox">G</div>
-              <div className="infoBox wrong">U</div>
+              <div className="infoBox" id="wrong">
+                U
+              </div>
               <div className="infoBox">E</div>
             </div>
             <p>U is not in the word in any spot.</p>
           </section>
           <section>
-          <h2>Credit</h2>
-          <p>Thank you to the original <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> for making this project possible!</p>
+            <h2>Credit</h2>
+            <p>
+              Thank you to the original{" "}
+              <a href="https://www.nytimes.com/games/wordle/index.html">
+                Wordle
+              </a>{" "}
+              for making this project possible!
+            </p>
           </section>
         </Modal>
       </div>
