@@ -15,7 +15,8 @@ function App() {
 
   const onSelect = (keyValue) => {
     const currentBoard = [...board];
-    if (currentAttempt.attempt > 4) return;
+    if (currentAttempt.attempt > 5) return;
+    if (currentAttempt.position > 4) return;
     currentBoard[currentAttempt.attempt][currentAttempt.position] = keyValue;
     setBoard(currentBoard);
     setCurrentAttempt({
