@@ -12,13 +12,48 @@ function App() {
     attempt: 0,
     position: 0,
   });
+
+  const onSelect = (keyValue) => {
+    const currentBoard = [...board];
+    if (currentAttempt.attempt > 4) return;
+    currentBoard[currentAttempt.attempt][currentAttempt.position] = keyValue;
+    setBoard(currentBoard);
+    setCurrentAttempt({
+      ...currentAttempt,
+      position: currentAttempt.position + 1,
+    });
+  };
+
+  const onDelete = () => {
+    if (currentAttempt.position === 0) return;
+    const currentBoard = [...board];
+    currentBoard[currentAttempt.attempt][currentAttempt.position - 1] = "";
+    setBoard(currentBoard);
+    setCurrentAttempt({
+      ...currentAttempt,
+      position: currentAttempt.position - 1,
+    });
+  };
+
+  const onEnter = () => {
+    if (currentAttempt.position !== 5) return;
+    setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
+  };
   return (
     <>
       <Header />
       <br />
       <main>
         <AppContext.Provider
-          value={{ board, setBoard, currentAttempt, setCurrentAttempt }}
+          value={{
+            board,
+            setBoard,
+            currentAttempt,
+            setCurrentAttempt,
+            onSelect,
+            onDelete,
+            onEnter,
+          }}
         >
           <Grid />
           <br />
