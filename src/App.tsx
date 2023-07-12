@@ -12,8 +12,8 @@ function App() {
     attempt: 0,
     position: 0,
   });
-
   const [newSet, setNewSet] = useState(new Set());
+  const [disabledValues, setDisabledValues] = useState([]);
 
   const correctWord = "RIGHT";
 
@@ -58,6 +58,10 @@ function App() {
     } else {
       alert("Word Not Found");
     }
+
+    if (currentWord === correctWord) {
+      alert(`${correctWord} was correct!`);
+    }
   };
   return (
     <>
@@ -70,6 +74,8 @@ function App() {
             setBoard,
             currentAttempt,
             setCurrentAttempt,
+            disabledValues,
+            setDisabledValues,
             onSelect,
             onDelete,
             onEnter,

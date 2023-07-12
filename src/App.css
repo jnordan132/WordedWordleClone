@@ -62,6 +62,10 @@ button:hover {
   background-color: rgb(174, 174, 174);
 }
 
+#disabled {
+  background-color: rgb(89, 89, 89);
+}
+
 body > div:nth-child(5) > div, body > div:nth-child(6) > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }
