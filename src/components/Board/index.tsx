@@ -1,13 +1,37 @@
 import { BsBackspace } from "react-icons/bs";
+import React, {useState, useEffect} from "react";
 
 function Board() {
+  const [char, setChar] = useState("");
+  useEffect(() => {
+   console.log(char)
+ }, [char])
+
+  // Get virtual keyboard click value 
+    const handleClick = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+       setChar(event.target.innerHTML);
+    };
+
+  // Get physical keyboard click value
+  // var keyValue: any;
+  // document.addEventListener('keyup', function(event) {
+  //   keyValue = event.key
+  //   if (event.repeat) {
+  //     return
+  //   }
+  //   console.log(keyValue) 
+  // })
+
+
+
+
 
 
   return (
     <section className="board">
-      <div className="boardRow">
+      <div className="boardRow" onClick={handleClick}>
         <div className="key">
-          <p>Q</p>
+          <p >Q</p>
         </div>
         <div className="key">
           <p>W</p>
