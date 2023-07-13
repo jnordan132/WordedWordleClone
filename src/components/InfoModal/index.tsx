@@ -1,9 +1,35 @@
-import React from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import { BsInfoCircle, BsXCircle } from "react-icons/bs";
 
+interface CustomStyles {
+  content: {
+    top: string;
+    left: string;
+    right: string;
+    bottom: string;
+    marginRight: string;
+    transform: string;
+    color: string;
+    background: string;
+    width: string;
+    display: string;
+    flexDirection: FlexDirection | undefined;
+    textAlign: TextAlign | undefined;
+  };
+}
+
+type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
+type TextAlign =
+  | "left"
+  | "right"
+  | "center"
+  | "justify"
+  | "initial"
+  | "inherit";
+
 function InfoModal() {
-  const customStyles = {
+  const customStyles: CustomStyles = {
     content: {
       top: "50%",
       left: "50%",
@@ -20,7 +46,7 @@ function InfoModal() {
     },
   };
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);

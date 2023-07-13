@@ -1,6 +1,6 @@
+import React, { useEffect, useCallback, useContext } from "react";
 import { AppContext } from "../../App";
 import Key from "../Key";
-import React, { useEffect, useCallback, useContext } from "react";
 
 function Board() {
   const {
@@ -16,39 +16,42 @@ function Board() {
   const rowTwo = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const rowThree = ["Z", "X", "C", "V", "B", "N", "M"];
 
-  const handleKeyboard = useCallback((event: { key: string }) => {
-    if (event.key === "Enter") {
-      onEnter();
-    } else if (event.key === "Backspace") {
-      onDelete();
-    } else {
-      rowOne.forEach((key) => {
-        if (event.key.toUpperCase() === key.toUpperCase()) {
-          onSelect(key);
-        }
-      });
-      rowTwo.forEach((key) => {
-        if (event.key.toUpperCase() === key.toUpperCase()) {
-          onSelect(key);
-        }
-      });
-      rowThree.forEach((key) => {
-        if (event.key.toUpperCase() === key.toUpperCase()) {
-          onSelect(key);
-        }
-      });
-    }
-  });
+  const handleKeyboard = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        onEnter();
+      } else if (event.key === "Backspace") {
+        onDelete();
+      } else {
+        rowOne.forEach((key) => {
+          if (event.key.toUpperCase() === key.toUpperCase()) {
+            onSelect(key);
+          }
+        });
+        rowTwo.forEach((key) => {
+          if (event.key.toUpperCase() === key.toUpperCase()) {
+            onSelect(key);
+          }
+        });
+        rowThree.forEach((key) => {
+          if (event.key.toUpperCase() === key.toUpperCase()) {
+            onSelect(key);
+          }
+        });
+      }
+    },
+    [onEnter, onDelete, onSelect, rowOne, rowTwo, rowThree]
+  );
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyboard);
+    window.addEventListener("keydown", handleKeyboard as EventListener);
     return () => {
-      document.removeEventListener("keydown", handleKeyboard);
+      window.removeEventListener("keydown", handleKeyboard as EventListener);
     };
   }, [handleKeyboard]);
 
   return (
-    <section className="board" onKeyDown={handleKeyboard}>
+    <section className="board">
       <div className="boardRow">
         {rowOne.map((letter) => {
           return (
@@ -81,9 +84,9 @@ function Board() {
         <Key
           keyValue={"ENTER"}
           util={true}
-          disabled={undefined}
-          needed={undefined}
-          correct={undefined}
+          disabled={false}
+          needed={false}
+          correct={false}
         />
         {rowThree.map((letter) => {
           return (
@@ -100,9 +103,9 @@ function Board() {
         <Key
           keyValue={"DELETE"}
           util={true}
-          disabled={undefined}
-          needed={undefined}
-          correct={undefined}
+          disabled={false}
+          needed={false}
+          correct={false}
         />
       </div>
     </section>

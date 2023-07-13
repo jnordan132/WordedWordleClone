@@ -1,7 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../App";
 
-function Box({ attempt, position }) {
+interface BoxProps {
+  attempt: number;
+  position: number;
+}
+
+function Box({ attempt, position }: BoxProps) {
   const {
     board,
     correctWord,
@@ -15,18 +20,23 @@ function Box({ attempt, position }) {
   const correct = correctWord[position] === value;
   const needed = !correct && value !== "" && correctWord.includes(value);
   const valueState =
-    currentAttempt.attempt > attempt &&
-    (correct ? "correct" : needed ? "needed" : "wrong");
+    currentAttempt.attempt > attempt
+      ? correct
+        ? "correct"
+        : needed
+        ? "needed"
+        : "wrong"
+      : undefined;
 
   useEffect(() => {
     if (value !== "" && !correct && !needed) {
-      setDisabledValues((used: any) => [...used, value]);
+      setDisabledValues((used: string[]) => [...used, value]);
     }
     if (value !== "" && needed) {
-      setNeededValues((used: any) => [...used, value]);
+      setNeededValues((used: string[]) => [...used, value]);
     }
     if (value !== "" && correct) {
-      setCorrectValues((used: any) => [...used, value]);
+      setCorrectValues((used: string[]) => [...used, value]);
     }
   }, [currentAttempt.attempt]);
 

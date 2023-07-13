@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect } from "react";
 import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
@@ -7,7 +7,8 @@ import { wordLayout, generateWordArr } from "./utils/words";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NOT_FOUND_MESSAGE, CORRECT_WORD_MESSAGE } from "./utils/message";
-export const AppContext = createContext();
+
+export const AppContext = createContext<any>(null);
 
 function App() {
   const [board, setBoard] = useState(wordLayout);
@@ -15,10 +16,10 @@ function App() {
     attempt: 0,
     position: 0,
   });
-  const [newSet, setNewSet] = useState(new Set());
-  const [disabledValues, setDisabledValues] = useState([]);
-  const [neededValues, setNeededValues] = useState([]);
-  const [correctValues, setCorrectValues] = useState([]);
+  const [newSet, setNewSet] = useState<Set<string>>(new Set());
+  const [disabledValues, setDisabledValues] = useState<string[]>([]);
+  const [neededValues, setNeededValues] = useState<string[]>([]);
+  const [correctValues, setCorrectValues] = useState<string[]>([]);
 
   const notify = (message: string, hasError = false) => {
     if (hasError) {
@@ -43,8 +44,8 @@ function App() {
   const correctWord = "RIGHT";
 
   useEffect(() => {
-    generateWordArr().then((words) => setNewSet(words.newSet));
-  });
+    generateWordArr().then((words: any) => setNewSet(words.newSet));
+  }, []);
 
   const onSelect = (keyValue: string) => {
     const currentBoard = [...board];
@@ -90,6 +91,7 @@ function App() {
 
     // notify(`The correct word was ${correctWord}`);
   };
+
   return (
     <>
       <ToastContainer
