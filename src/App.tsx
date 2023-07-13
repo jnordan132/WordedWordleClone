@@ -4,6 +4,9 @@ import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
 import { wordLayout, generateWordArr } from "./utils/words";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { NOT_FOUND_MESSAGE, CORRECT_WORD_MESSAGE } from "./utils/message";
 export const AppContext = createContext();
 
 function App() {
@@ -12,9 +15,30 @@ function App() {
     attempt: 0,
     position: 0,
   });
-  const [active, setActive] = useState(false);
   const [newSet, setNewSet] = useState(new Set());
   const [disabledValues, setDisabledValues] = useState([]);
+  const [correctValues, setCorrectValues] = useState([]);
+  // const [disabledValues, setDisabledValues] = useState([]);
+
+  const notify = (message: string, hasError = false) => {
+    if (hasError) {
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 800,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    } else {
+      toast(message, {
+        position: "top-center",
+        autoClose: 800,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    }
+  };
 
   const correctWord = "RIGHT";
 
@@ -22,7 +46,7 @@ function App() {
     generateWordArr().then((words) => setNewSet(words.newSet));
   });
 
-  const onSelect = (keyValue: string) => {
+  const onSelect = (keyValue) => {
     const currentBoard = [...board];
     if (currentAttempt.attempt > 5) return;
     if (currentAttempt.position > 4) return;
@@ -32,7 +56,6 @@ function App() {
       ...currentAttempt,
       position: currentAttempt.position + 1,
     });
-    setActive(true);
   };
 
   const onDelete = () => {
@@ -44,7 +67,6 @@ function App() {
       ...currentAttempt,
       position: currentAttempt.position - 1,
     });
-    setActive(false);
   };
 
   const onEnter = () => {
@@ -59,15 +81,26 @@ function App() {
     if (newSet.has(currentWord.toUpperCase())) {
       setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
     } else {
-      console.log("Word Not Found");
+      notify(NOT_FOUND_MESSAGE);
     }
+
     if (currentWord === correctWord) {
-      console.log(`${correctWord} was correct!`);
+      notify(CORRECT_WORD_MESSAGE);
     }
-    setActive(false);
   };
   return (
     <>
+      <ToastContainer
+        closeButton={false}
+        position="top-center"
+        autoClose={800}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+      />
       <Header />
       <br />
       <main>
@@ -77,10 +110,10 @@ function App() {
             setBoard,
             currentAttempt,
             setCurrentAttempt,
-            active,
-            setActive,
             disabledValues,
             setDisabledValues,
+            correctValues,
+            setCorrectValues,
             onSelect,
             onDelete,
             onEnter,

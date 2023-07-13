@@ -2,10 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../App";
 
 function Box({ attempt, position }) {
-  const { board, correctWord, currentAttempt, setDisabledValues, active } =
-    useContext(AppContext);
+  const {
+    board,
+    correctWord,
+    currentAttempt,
+    disabledValues,
+    setDisabledValues,
+  } = useContext(AppContext);
   const value = board[attempt][position];
-  // console.log(active);
+
   const correct = correctWord[position] === value;
   const needed = !correct && value !== "" && correctWord.includes(value);
   const valueState =
@@ -14,12 +19,12 @@ function Box({ attempt, position }) {
 
   useEffect(() => {
     if (value !== "" && !correct && !needed) {
-      setDisabledValues((prev: any) => [...prev, value]);
+      setDisabledValues((used: any) => [...used, value]);
     }
-  }, currentAttempt.attempt);
+  }, [currentAttempt.attempt]);
 
   return (
-    <div className={active ? "box active" : "box"} id={valueState}>
+    <div className="box" id={valueState}>
       {value}
     </div>
   );
