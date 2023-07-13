@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useContext } from "react";
+import { useEffect, useCallback, useContext } from "react";
 import { AppContext } from "../../App";
 import Key from "../Key";
 
