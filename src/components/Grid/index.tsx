@@ -1,6 +1,10 @@
 import Box from "../Box";
+import { AppContext } from "../../App";
+import React, { useContext } from "react";
 
 function Grid() {
+  const { active } = useContext(AppContext);
+
   return (
     <section className="grid">
       <div className="row">

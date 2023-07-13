@@ -12,6 +12,7 @@ function App() {
     attempt: 0,
     position: 0,
   });
+  const [active, setActive] = useState(false);
   const [newSet, setNewSet] = useState(new Set());
   const [disabledValues, setDisabledValues] = useState([]);
 
@@ -21,7 +22,7 @@ function App() {
     generateWordArr().then((words) => setNewSet(words.newSet));
   });
 
-  const onSelect = (keyValue) => {
+  const onSelect = (keyValue: string) => {
     const currentBoard = [...board];
     if (currentAttempt.attempt > 5) return;
     if (currentAttempt.position > 4) return;
@@ -31,6 +32,7 @@ function App() {
       ...currentAttempt,
       position: currentAttempt.position + 1,
     });
+    setActive(true);
   };
 
   const onDelete = () => {
@@ -42,6 +44,7 @@ function App() {
       ...currentAttempt,
       position: currentAttempt.position - 1,
     });
+    setActive(false);
   };
 
   const onEnter = () => {
@@ -56,12 +59,12 @@ function App() {
     if (newSet.has(currentWord.toUpperCase())) {
       setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
     } else {
-      alert("Word Not Found");
+      console.log("Word Not Found");
     }
-
     if (currentWord === correctWord) {
-      alert(`${correctWord} was correct!`);
+      console.log(`${correctWord} was correct!`);
     }
+    setActive(false);
   };
   return (
     <>
@@ -74,6 +77,8 @@ function App() {
             setBoard,
             currentAttempt,
             setCurrentAttempt,
+            active,
+            setActive,
             disabledValues,
             setDisabledValues,
             onSelect,

@@ -1,7 +1,6 @@
 import InfoModal from "../InfoModal";
 import StatsModal from "../StatsModal";
 
-
 function Header() {
   return (
     <header>
