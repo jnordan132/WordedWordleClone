@@ -41,7 +41,7 @@ function App() {
     }
   };
 
-  const correctWord = "RIGHT";
+  const correctWord = "BROWN";
 
   useEffect(() => {
     generateWordArr().then((words: any) => setNewSet(words.newSet));
