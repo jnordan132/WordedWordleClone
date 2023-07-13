@@ -6,8 +6,9 @@ function Box({ attempt, position }) {
     board,
     correctWord,
     currentAttempt,
-    disabledValues,
     setDisabledValues,
+    setNeededValues,
+    setCorrectValues,
   } = useContext(AppContext);
   const value = board[attempt][position];
 
@@ -20,6 +21,12 @@ function Box({ attempt, position }) {
   useEffect(() => {
     if (value !== "" && !correct && !needed) {
       setDisabledValues((used: any) => [...used, value]);
+    }
+    if (value !== "" && needed) {
+      setNeededValues((used: any) => [...used, value]);
+    }
+    if (value !== "" && correct) {
+      setCorrectValues((used: any) => [...used, value]);
     }
   }, [currentAttempt.attempt]);
 

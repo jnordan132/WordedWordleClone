@@ -17,8 +17,8 @@ function App() {
   });
   const [newSet, setNewSet] = useState(new Set());
   const [disabledValues, setDisabledValues] = useState([]);
+  const [neededValues, setNeededValues] = useState([]);
   const [correctValues, setCorrectValues] = useState([]);
-  // const [disabledValues, setDisabledValues] = useState([]);
 
   const notify = (message: string, hasError = false) => {
     if (hasError) {
@@ -46,7 +46,7 @@ function App() {
     generateWordArr().then((words) => setNewSet(words.newSet));
   });
 
-  const onSelect = (keyValue) => {
+  const onSelect = (keyValue: string) => {
     const currentBoard = [...board];
     if (currentAttempt.attempt > 5) return;
     if (currentAttempt.position > 4) return;
@@ -87,6 +87,8 @@ function App() {
     if (currentWord === correctWord) {
       notify(CORRECT_WORD_MESSAGE);
     }
+
+    // notify(`The correct word was ${correctWord}`);
   };
   return (
     <>
@@ -112,6 +114,8 @@ function App() {
             setCurrentAttempt,
             disabledValues,
             setDisabledValues,
+            neededValues,
+            setNeededValues,
             correctValues,
             setCorrectValues,
             onSelect,

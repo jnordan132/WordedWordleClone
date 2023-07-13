@@ -60,10 +60,19 @@ button:hover {
 
 #wrong {
   background-color: rgb(82, 82, 82);
+  border: 2px solid rgb(82, 82, 82);
 }
 
-#disabled {
+#disabledKey {
   background-color: rgb(67, 67, 67);
+}
+
+#neededKey {
+  background-color: rgb(230, 167, 42);
+}
+
+#correctKey {
+  background-color: green;
 }
 
 body > div:nth-child(5) > div, body > div:nth-child(6) > div {

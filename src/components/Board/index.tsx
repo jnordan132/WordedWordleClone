@@ -3,8 +3,14 @@ import Key from "../Key";
 import React, { useEffect, useCallback, useContext } from "react";
 
 function Board() {
-  const { onEnter, onDelete, onSelect, disabledValues } =
-    useContext(AppContext);
+  const {
+    onEnter,
+    onDelete,
+    onSelect,
+    disabledValues,
+    neededValues,
+    correctValues,
+  } = useContext(AppContext);
 
   const rowOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const rowTwo = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -51,6 +57,8 @@ function Board() {
               keyValue={letter}
               util={false}
               disabled={disabledValues.includes(letter)}
+              needed={neededValues.includes(letter)}
+              correct={correctValues.includes(letter)}
             />
           );
         })}
@@ -63,12 +71,20 @@ function Board() {
               keyValue={letter}
               util={false}
               disabled={disabledValues.includes(letter)}
+              needed={neededValues.includes(letter)}
+              correct={correctValues.includes(letter)}
             />
           );
         })}
       </div>
       <div className="boardRow">
-        <Key keyValue={"ENTER"} util={true} disabled={undefined} />
+        <Key
+          keyValue={"ENTER"}
+          util={true}
+          disabled={undefined}
+          needed={undefined}
+          correct={undefined}
+        />
         {rowThree.map((letter) => {
           return (
             <Key
@@ -76,10 +92,18 @@ function Board() {
               keyValue={letter}
               util={false}
               disabled={disabledValues.includes(letter)}
+              needed={neededValues.includes(letter)}
+              correct={correctValues.includes(letter)}
             />
           );
         })}
-        <Key keyValue={"DELETE"} util={true} disabled={undefined} />
+        <Key
+          keyValue={"DELETE"}
+          util={true}
+          disabled={undefined}
+          needed={undefined}
+          correct={undefined}
+        />
       </div>
     </section>
   );
