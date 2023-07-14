@@ -145,3 +145,16 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
 
 
 
+.statsModal p {
+  margin-top: 0;
+}
+
+.statsModal ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.statsModal li {
+  list-style: none;
+}

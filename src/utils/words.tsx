@@ -16,7 +16,7 @@ export const generateWordArr = async () => {
       return res.text();
     })
     .then((res) => {
-      const wordArr = res.split("\n");
+      const wordArr = res.split("\r\n");
       newSet = new Set(wordArr);
     });
 

@@ -87,9 +87,20 @@ function App() {
 
     if (currentWord === correctWord) {
       notify(CORRECT_WORD_MESSAGE);
+      var prevPlayerObj = JSON.parse(localStorage.getItem("stats")) || {
+        timesPlayed: 0,
+        winPercentage: 0,
+        timesSolved: 0,
+      };
+      var playerObj = {
+        timesPlayed: prevPlayerObj.timesPlayed + 1,
+        winPercentage:
+          Math.floor(prevPlayerObj.timesPlayed / prevPlayerObj.timesSolved) *
+            100 || 100,
+        timesSolved: prevPlayerObj.timesSolved + 1,
+      };
+      localStorage.setItem("stats", JSON.stringify(playerObj));
     }
-
-    // notify(`The correct word was ${correctWord}`);
   };
 
   return (

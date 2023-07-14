@@ -1,9 +1,35 @@
-import React from "react";
+import { useState } from "react";
 import Modal from "react-modal";
-import { BsFillBarChartFill, BsXCircle } from "react-icons/bs";
+import { BsInfoCircle, BsXCircle } from "react-icons/bs";
+
+interface CustomStyles {
+  content: {
+    top: string;
+    left: string;
+    right: string;
+    bottom: string;
+    marginRight: string;
+    transform: string;
+    color: string;
+    background: string;
+    width: string;
+    display: string;
+    flexDirection: FlexDirection | undefined;
+    textAlign: TextAlign | undefined;
+  };
+}
+
+type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
+type TextAlign =
+  | "left"
+  | "right"
+  | "center"
+  | "justify"
+  | "initial"
+  | "inherit";
 
 function StatsModal() {
-  const customStyles = {
+  const customStyles: CustomStyles = {
     content: {
       top: "50%",
       left: "50%",
@@ -11,38 +37,64 @@ function StatsModal() {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      color: "red"
+      color: "white",
+      background: "rgb(48, 48, 48)",
+      width: "40%",
+      display: "flex",
+      flexDirection: "column",
+      textAlign: "center",
     },
   };
 
-  let subtitle: any;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = "#f77";
   }
 
   function closeModal() {
     setIsOpen(false);
   }
 
+  if (localStorage.getItem("stats")) {
+    var playerStats = JSON.parse(localStorage.getItem("stats"));
+  } else {
+    return;
+  }
+
   return (
     <>
-      <div className="modal">
-        <button onClick={openModal}><BsFillBarChartFill/></button>
+      <div>
+        <button onClick={openModal}>
+          <BsInfoCircle />
+        </button>
         <Modal
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Statistics Modal"
+          contentLabel="Information Modal"
         >
-          <button onClick={closeModal}><BsXCircle/></button>
-          <div>STATS MODAL</div>
+          <button className="closeBtn" onClick={closeModal}>
+            <BsXCircle />
+          </button>
+          <section className="statsModal">
+            <h2>Statistics</h2>
+            <ul className="statsUl">
+              <li className="timesPlayed">
+                <b>{playerStats.timesPlayed}</b>
+                <p>Played</p>
+              </li>
+              <li className="winPercentage">
+                <b>{playerStats.winPercentage}</b>
+                <p>Win %</p>
+              </li>
+              <li className="timesSolved">
+                <b>{playerStats.timesSolved}</b>
+                <p>Solved</p>
+                <p></p>
+              </li>
+            </ul>
+          </section>
         </Modal>
       </div>
     </>
