@@ -57,7 +57,7 @@ function StatsModal() {
   }
 
   if (localStorage.getItem("stats")) {
-    var playerStats = JSON.parse(localStorage.getItem("stats"));
+    var playerStats = JSON.parse(localStorage.getItem("stats") ?? "null");
   } else {
     return;
   }

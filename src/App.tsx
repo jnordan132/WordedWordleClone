@@ -87,7 +87,9 @@ function App() {
 
     if (currentWord === correctWord) {
       notify(CORRECT_WORD_MESSAGE);
-      var prevPlayerObj = JSON.parse(localStorage.getItem("stats")) || {
+      var prevPlayerObj = JSON.parse(
+        localStorage.getItem("stats") as string
+      ) || {
         timesPlayed: 0,
         winPercentage: 0,
         timesSolved: 0,
