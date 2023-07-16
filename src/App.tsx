@@ -85,23 +85,35 @@ function App() {
       notify(NOT_FOUND_MESSAGE);
     }
 
+    var prevPlayerObj = JSON.parse(localStorage.getItem("stats") as string) || {
+      timesPlayed: 0,
+      winPercentage: 0,
+      timesSolved: 0,
+    };
+
+    if (board[5][4] && currentWord != correctWord) {
+      notify(`The correct word is ${correctWord}`);
+      if (prevPlayerObj.winPercentage === 0) {
+        var newPlayerObj = {
+          timesPlayed: prevPlayerObj.timesPlayed + 1,
+          timesSolved: prevPlayerObj.timesSolved,
+        };
+      } else {
+        var newPlayerObj = {
+          timesPlayed: prevPlayerObj.timesPlayed + 1,
+          timesSolved: prevPlayerObj.timesSolved,
+        };
+      }
+      localStorage.setItem("stats", JSON.stringify(newPlayerObj));
+    }
+
     if (currentWord === correctWord) {
       notify(CORRECT_WORD_MESSAGE);
-      var prevPlayerObj = JSON.parse(
-        localStorage.getItem("stats") as string
-      ) || {
-        timesPlayed: 0,
-        winPercentage: 0,
-        timesSolved: 0,
-      };
-      var playerObj = {
+      var newPlayerObj = {
         timesPlayed: prevPlayerObj.timesPlayed + 1,
-        winPercentage:
-          Math.floor(prevPlayerObj.timesPlayed / prevPlayerObj.timesSolved) *
-            100 || 100,
         timesSolved: prevPlayerObj.timesSolved + 1,
       };
-      localStorage.setItem("stats", JSON.stringify(playerObj));
+      localStorage.setItem("stats", JSON.stringify(newPlayerObj));
     }
   };
 
