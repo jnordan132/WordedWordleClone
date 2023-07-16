@@ -36,10 +36,3 @@ export const generateCorrectWord = async () => {
 
   return { wordForThisGame };
 };
-
-// export async function attempt() {
-//   const test = await generateCorrectWord();
-//   console.log(test);
-// }
-
-// attempt();
