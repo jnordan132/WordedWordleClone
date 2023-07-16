@@ -84,10 +84,6 @@ function StatsModal() {
                 <b>{playerStats.timesPlayed}</b>
                 <p>Played</p>
               </li>
-              <li className="winPercentage">
-                <b>{playerStats.winPercentage}</b>
-                <p>Win %</p>
-              </li>
               <li className="timesSolved">
                 <b>{playerStats.timesSolved}</b>
                 <p>Solved</p>
