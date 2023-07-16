@@ -73,11 +73,11 @@ function App() {
   const onEnter = () => {
     if (currentAttempt.position !== 5) return;
 
-    let currentWord = "";
+    let wordGuessed = "";
     for (let i = 0; i < 5; i++) {
-      currentWord += board[currentAttempt.attempt][i];
+      wordGuessed += board[currentAttempt.attempt][i];
     }
-    if (newSet.has(currentWord.toUpperCase())) {
+    if (newSet.has(wordGuessed.toUpperCase())) {
       setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
     } else {
       notify(NOT_FOUND_MESSAGE);
@@ -88,7 +88,7 @@ function App() {
       timesSolved: 0,
     };
 
-    if (board[5][4] && currentWord != correctWord) {
+    if (board[5][4] && wordGuessed != correctWord) {
       notify(`The correct word is ${correctWord}`);
       var newPlayerObj = {
         timesPlayed: prevPlayerObj.timesPlayed + 1,
@@ -97,7 +97,11 @@ function App() {
       localStorage.setItem("stats", JSON.stringify(newPlayerObj));
     }
 
-    if (currentWord === correctWord) {
+    if (wordGuessed === correctWord) {
+      setCurrentAttempt({
+        attempt: currentAttempt.attempt + 1,
+        position: currentAttempt.position + 1,
+      });
       notify(CORRECT_WORD_MESSAGE);
       var newPlayerObj = {
         timesPlayed: prevPlayerObj.timesPlayed + 1,
