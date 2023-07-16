@@ -3,7 +3,11 @@ import { useState, createContext, useEffect } from "react";
 import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
-import { wordLayout, generateWordArr } from "./utils/words";
+import {
+  wordLayout,
+  generateWordArr,
+  generateCorrectWord,
+} from "./utils/words";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NOT_FOUND_MESSAGE, CORRECT_WORD_MESSAGE } from "./utils/message";
@@ -17,6 +21,7 @@ function App() {
     position: 0,
   });
   const [newSet, setNewSet] = useState<Set<string>>(new Set());
+  const [idk, setIdk] = useState<string[]>([]);
   const [disabledValues, setDisabledValues] = useState<string[]>([]);
   const [neededValues, setNeededValues] = useState<string[]>([]);
   const [correctValues, setCorrectValues] = useState<string[]>([]);
@@ -41,10 +46,12 @@ function App() {
     }
   };
 
-  const correctWord = "BROWN";
+  const correctWord = idk;
+  console.log(correctWord);
 
   useEffect(() => {
     generateWordArr().then((words: any) => setNewSet(words.newSet));
+    generateCorrectWord().then((one: any) => setIdk(one.wordForThisGame));
   }, []);
 
   const onSelect = (keyValue: string) => {
@@ -88,7 +95,7 @@ function App() {
       timesSolved: 0,
     };
 
-    if (board[5][4] && wordGuessed != correctWord) {
+    if (board[5][4] && !correctWord.includes(wordGuessed)) {
       notify(`The correct word is ${correctWord}`);
       var newPlayerObj = {
         timesPlayed: prevPlayerObj.timesPlayed + 1,
@@ -97,7 +104,7 @@ function App() {
       localStorage.setItem("stats", JSON.stringify(newPlayerObj));
     }
 
-    if (wordGuessed === correctWord) {
+    if (correctWord.includes(wordGuessed)) {
       setCurrentAttempt({
         attempt: currentAttempt.attempt + 1,
         position: currentAttempt.position + 1,
