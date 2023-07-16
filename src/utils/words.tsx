@@ -30,7 +30,7 @@ export const generateCorrectWord = async () => {
       return res.text();
     })
     .then((res) => {
-      const wordArr = res.split("\r\n");
+      const wordArr = res.split("\r");
       wordForThisGame = wordArr[Math.floor(Math.random() * wordArr.length)];
     });
 

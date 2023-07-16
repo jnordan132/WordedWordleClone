@@ -13,9 +13,9 @@ function Key({ keyValue, util, disabled, needed, correct }: KeyProps) {
   const { onSelect, onDelete, onEnter } = useContext(AppContext);
 
   const selected = () => {
-    if (keyValue === "ENTER") {
+    if (keyValue === "ENT") {
       onEnter();
-    } else if (keyValue === "DELETE") {
+    } else if (keyValue === "DEL") {
       onDelete();
     } else {
       onSelect(keyValue);

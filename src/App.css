@@ -24,16 +24,23 @@ button:hover {
   cursor: pointer;
 }
 
-
 .infoRow {
   display: flex;
   justify-content: center;
 }
 
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
 .closeBtn {
   width: 29px;
   height: 19px;
-  margin-left: auto;
+  display: flex;
+  justify-self: center;
+  margin: 10px 10px 0 0;
 }
 
 .infoBox {
@@ -75,10 +82,10 @@ button:hover {
   background-color: green;
 }
 
-body > div:nth-child(5) > div, body > div:nth-child(6) > div {
+body > div:nth-child(5) > div,
+body > div:nth-child(6) > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }
-
 
 .row {
   display: flex;
@@ -96,7 +103,6 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
   width: 45px;
   text-align: center;
 }
-
 
 .boardRow {
   display: flex;
@@ -132,18 +138,22 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
 }
 
 @keyframes example {
-  0%   {transform: scale(1.0)}
-  50%  {transform: scale(1.075)}
-  100% {transform: scale(1.0);}
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.075);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .active {
   animation-name: example;
-  animation-duration: .08s;
+  animation-duration: 0.08s;
   border: 2px solid rgb(109, 109, 109) !important;
 }
-
-
 
 .statsModal p {
   margin-top: 0;
@@ -151,10 +161,58 @@ body > div:nth-child(5) > div, body > div:nth-child(6) > div {
 
 .statsModal ul {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 0;
 }
 
 .statsModal li {
   list-style: none;
+  text-align: center;
+  margin: 0 15px;
+}
+
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  right: "auto";
+  bottom: "auto";
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: "white";
+  background: rgb(48, 48, 48);
+  width: 40%;
+  display: "flex";
+  flex-direction: "column";
+  text-align: "center";
+}
+
+.stats {
+  width: 20%;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+@media screen and (max-width: 1220px) {
+  .modal {
+    width: 60%;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .modal {
+    width: 80%;
+    padding: 15px;
+  }
 }

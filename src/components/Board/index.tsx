@@ -82,7 +82,7 @@ function Board() {
       </div>
       <div className="boardRow">
         <Key
-          keyValue={"ENTER"}
+          keyValue={"ENT"}
           util={true}
           disabled={false}
           needed={false}
@@ -101,7 +101,7 @@ function Board() {
           );
         })}
         <Key
-          keyValue={"DELETE"}
+          keyValue={"DEL"}
           util={true}
           disabled={false}
           needed={false}
