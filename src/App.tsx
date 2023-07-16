@@ -77,8 +77,6 @@ function App() {
     for (let i = 0; i < 5; i++) {
       currentWord += board[currentAttempt.attempt][i];
     }
-    console.log(currentWord);
-    console.log(newSet);
     if (newSet.has(currentWord.toUpperCase())) {
       setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
     } else {
@@ -87,23 +85,15 @@ function App() {
 
     var prevPlayerObj = JSON.parse(localStorage.getItem("stats") as string) || {
       timesPlayed: 0,
-      winPercentage: 0,
       timesSolved: 0,
     };
 
     if (board[5][4] && currentWord != correctWord) {
       notify(`The correct word is ${correctWord}`);
-      if (prevPlayerObj.winPercentage === 0) {
-        var newPlayerObj = {
-          timesPlayed: prevPlayerObj.timesPlayed + 1,
-          timesSolved: prevPlayerObj.timesSolved,
-        };
-      } else {
-        var newPlayerObj = {
-          timesPlayed: prevPlayerObj.timesPlayed + 1,
-          timesSolved: prevPlayerObj.timesSolved,
-        };
-      }
+      var newPlayerObj = {
+        timesPlayed: prevPlayerObj.timesPlayed + 1,
+        timesSolved: prevPlayerObj.timesSolved,
+      };
       localStorage.setItem("stats", JSON.stringify(newPlayerObj));
     }
 
