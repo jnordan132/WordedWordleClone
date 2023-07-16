@@ -51,7 +51,9 @@ function App() {
 
   useEffect(() => {
     generateWordArr().then((words: any) => setNewSet(words.newSet));
-    generateCorrectWord().then((one: any) => setIdk(one.wordForThisGame));
+    generateCorrectWord().then((randomWord: any) =>
+      setIdk(randomWord.wordForThisGame)
+    );
   }, []);
 
   const onSelect = (keyValue: string) => {
