@@ -16,6 +16,6 @@ If you find any bugs, or would like to reach out with questions. Feel free to se
 
 ## Site Layout
 
-![Main](public\assets\worded.png)
-![Info Modal](public\assets\wordedInfo.png)
-![Stats Modal](public\assets\wordedStats.png)
+![Main](./public/assets/worded.png)
+![Info Modal](./public/assets/wordedInfo.png)
+![Stats Modal](./public/assets/wordedStats.png)
