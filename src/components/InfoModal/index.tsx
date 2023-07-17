@@ -16,7 +16,7 @@ function InfoModal() {
   return (
     <>
       <div>
-        <button area-label="open information modal" onClick={openModal}>
+        <button aria-label="open information modal" onClick={openModal}>
           <BsInfoCircle />
         </button>
         <Modal
@@ -27,7 +27,7 @@ function InfoModal() {
         >
           <div className="button">
             <button
-              area-label="close information modal"
+              aria-label="close information modal"
               className="closeBtn"
               onClick={closeModal}
             >

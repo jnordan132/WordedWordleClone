@@ -22,7 +22,7 @@ function StatsModal() {
   return (
     <>
       <div>
-        <button area-label="open statistics modal" onClick={openModal}>
+        <button aria-label="open statistics modal" onClick={openModal}>
           <BsFillBarChartFill />
         </button>
         <Modal
@@ -33,7 +33,7 @@ function StatsModal() {
         >
           <div className="button">
             <button
-              area-label="close statistics modal"
+              aria-label="close statistics modal"
               className="closeBtn"
               onClick={closeModal}
             >
