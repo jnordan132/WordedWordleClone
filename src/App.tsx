@@ -119,6 +119,7 @@ function App() {
     <>
       <ToastContainer
         closeButton={false}
+        area-label="close modal"
         position="top-center"
         autoClose={800}
         hideProgressBar={true}

@@ -22,7 +22,7 @@ function StatsModal() {
   return (
     <>
       <div>
-        <button onClick={openModal}>
+        <button area-label="open statistics modal" onClick={openModal}>
           <BsFillBarChartFill />
         </button>
         <Modal
@@ -32,7 +32,11 @@ function StatsModal() {
           contentLabel="Information Modal"
         >
           <div className="button">
-            <button className="closeBtn" onClick={closeModal}>
+            <button
+              area-label="close statistics modal"
+              className="closeBtn"
+              onClick={closeModal}
+            >
               <BsXCircle />
             </button>
           </div>

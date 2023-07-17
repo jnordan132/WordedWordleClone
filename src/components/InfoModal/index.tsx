@@ -16,7 +16,7 @@ function InfoModal() {
   return (
     <>
       <div>
-        <button onClick={openModal}>
+        <button area-label="open information modal" onClick={openModal}>
           <BsInfoCircle />
         </button>
         <Modal
@@ -26,7 +26,11 @@ function InfoModal() {
           contentLabel="Information Modal"
         >
           <div className="button">
-            <button className="closeBtn" onClick={closeModal}>
+            <button
+              area-label="close information modal"
+              className="closeBtn"
+              onClick={closeModal}
+            >
               <BsXCircle />
             </button>
           </div>

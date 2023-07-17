@@ -6,10 +6,10 @@ function Header() {
     <header>
       <h1>Worded</h1>
       <nav>
-        <a>
+        <a href="#">
           <InfoModal />
         </a>
-        <a>
+        <a href="#">
           <StatsModal />
         </a>
       </nav>
