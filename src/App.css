@@ -145,12 +145,13 @@ button:hover {
   background-color: green;
 }
 
-/* Split up for netlify to apply */
-body > div:nth-child(5) > div {
+/* development */
+body > div:nth-child(5) > div,
+body > div:nth-child(6) > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }
-/* Split up for netlify to apply */
-body > div:nth-child(6) > div {
+/* deployment */
+body > div.ReactModalPortal > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }
 
