@@ -3,14 +3,9 @@ import { useState, createContext, useEffect } from "react";
 import Header from "./components/Header";
 import Grid from "./components/Grid";
 import Board from "./components/Board";
-import {
-  wordLayout,
-  generateWordArr,
-  generateCorrectWord,
-} from "./utils/words";
+import { wordLayout, generateWords } from "./utils/words";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { NOT_FOUND_MESSAGE, CORRECT_WORD_MESSAGE } from "./utils/message";
 
 export const AppContext = createContext<any>(null);
 
@@ -20,8 +15,8 @@ function App() {
     attempt: 0,
     position: 0,
   });
-  const [newSet, setNewSet] = useState<Set<string>>(new Set());
-  const [idk, setIdk] = useState<string[]>([]);
+  const [newSet, setNewSet] = useState<Set<string>>(new Set<string>());
+  const [word, setWord] = useState<string>("");
   const [disabledValues, setDisabledValues] = useState<string[]>([]);
   const [neededValues, setNeededValues] = useState<string[]>([]);
   const [correctValues, setCorrectValues] = useState<string[]>([]);
@@ -46,14 +41,14 @@ function App() {
     }
   };
 
-  const correctWord = idk;
+  const correctWord = word;
   console.log(correctWord);
 
   useEffect(() => {
-    generateWordArr().then((words: any) => setNewSet(words.newSet));
-    generateCorrectWord().then((randomWord: any) =>
-      setIdk(randomWord.wordForThisGame)
-    );
+    generateWords().then(({ newSet, wordForThisGame }) => {
+      setNewSet(newSet);
+      setWord(wordForThisGame);
+    });
   }, []);
 
   const onSelect = (keyValue: string) => {
@@ -89,7 +84,7 @@ function App() {
     if (newSet.has(wordGuessed.toUpperCase())) {
       setCurrentAttempt({ attempt: currentAttempt.attempt + 1, position: 0 });
     } else {
-      notify(NOT_FOUND_MESSAGE);
+      notify("Not in word list");
     }
 
     var prevPlayerObj = JSON.parse(localStorage.getItem("stats") as string) || {
@@ -111,7 +106,7 @@ function App() {
         attempt: currentAttempt.attempt + 1,
         position: currentAttempt.position + 1,
       });
-      notify(CORRECT_WORD_MESSAGE);
+      notify(`You guessed the word`);
       var newPlayerObj = {
         timesPlayed: prevPlayerObj.timesPlayed + 1,
         timesSolved: prevPlayerObj.timesSolved + 1,

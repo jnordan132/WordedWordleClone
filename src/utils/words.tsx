@@ -9,30 +9,19 @@ export const wordLayout = [
   ["", "", "", "", ""],
 ];
 
-export const generateWordArr = async () => {
-  let newSet;
-  await fetch(wordBank)
-    .then((res) => {
-      return res.text();
-    })
-    .then((res) => {
-      const wordArr = res.split("\n");
-      newSet = new Set(wordArr);
-    });
-
-  return { newSet };
-};
-
-export const generateCorrectWord = async () => {
-  let wordForThisGame;
-  await fetch(wordBank)
-    .then((res) => {
-      return res.text();
-    })
-    .then((res) => {
-      const wordArr = res.split("\n");
-      wordForThisGame = wordArr[Math.floor(Math.random() * wordArr.length)];
-    });
-
-  return { wordForThisGame };
+export const generateWords = async () => {
+  try {
+    const response = await fetch(wordBank);
+    const text = await response.text();
+    // \n for deployment
+    // \r\n for development
+    const wordArr = text.split("\r\n");
+    const newSet: Set<string> = new Set<string>(wordArr);
+    const randomWord: string =
+      wordArr[Math.floor(Math.random() * wordArr.length)];
+    return { newSet, wordForThisGame: randomWord };
+  } catch (error) {
+    console.error("Error fetching word bank:", error);
+    return { newSet: new Set<string>(), wordForThisGame: "" };
+  }
 };
