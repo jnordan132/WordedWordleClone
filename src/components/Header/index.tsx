@@ -6,10 +6,10 @@ function Header() {
     <header>
       <h1>Worded</h1>
       <nav>
-        <a href="#">
+        <a href="#" aria-label="open and read information Modal">
           <InfoModal />
         </a>
-        <a href="#">
+        <a href="#" aria-label="open and read statistics Modal">
           <StatsModal />
         </a>
       </nav>
