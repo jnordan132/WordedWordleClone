@@ -145,7 +145,11 @@ button:hover {
   background-color: green;
 }
 
-body > div:nth-child(5) > div,
+/* Split up for netlify to apply */
+body > div:nth-child(5) > div {
+  background-color: rgba(0, 0, 0, 0.577) !important;
+}
+/* Split up for netlify to apply */
 body > div:nth-child(6) > div {
   background-color: rgba(0, 0, 0, 0.577) !important;
 }

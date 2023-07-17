@@ -15,7 +15,7 @@ export const generateWords = async () => {
     const text = await response.text();
     // \n for deployment
     // \r\n for development
-    const wordArr = text.split("\r\n");
+    const wordArr = text.split("\n");
     const newSet: Set<string> = new Set<string>(wordArr);
     const randomWord: string =
       wordArr[Math.floor(Math.random() * wordArr.length)];
