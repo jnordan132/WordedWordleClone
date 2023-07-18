@@ -18,7 +18,11 @@ function Box({ attempt, position }: BoxProps) {
   const value = board[attempt][position];
 
   const correct = correctWord[position] === value;
-  const needed = !correct && value !== "" && correctWord.includes(value);
+  const needed =
+    !correct &&
+    value !== "" &&
+    correctWord.includes(value) &&
+    !board[attempt].includes(value);
   const valueState =
     currentAttempt.attempt > attempt
       ? correct
