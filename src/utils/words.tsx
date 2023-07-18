@@ -1,4 +1,5 @@
-import wordBank from "./wordBank.txt";
+import attemptWordBank from "./attemptWordBank.txt";
+import correctWordBank from "./correctWordBank.txt";
 
 export const wordLayout = [
   ["", "", "", "", ""],
@@ -11,14 +12,17 @@ export const wordLayout = [
 
 export const generateWords = async () => {
   try {
-    const response = await fetch(wordBank);
-    const text = await response.text();
+    const attemptedWords = await fetch(attemptWordBank);
+    const correctWords = await fetch(correctWordBank);
+    const attemptText = await attemptedWords.text();
+    const correctText = await correctWords.text();
     // \n for deployment
     // \r\n for development
-    const wordArr = text.split("\n");
-    const newSet: Set<string> = new Set<string>(wordArr);
+    const attemptWordArr = attemptText.split("\n");
+    const correctWordArr = correctText.split("\n");
+    const newSet: Set<string> = new Set<string>(attemptWordArr);
     const randomWord: string =
-      wordArr[Math.floor(Math.random() * wordArr.length)];
+      correctWordArr[Math.floor(Math.random() * correctWordArr.length)];
     return { newSet, wordForThisGame: randomWord };
   } catch (error) {
     console.error("Error fetching word bank:", error);
