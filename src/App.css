@@ -116,6 +116,16 @@ button:hover {
   width: 15%;
 }
 
+.btnDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.playBtn {
+  padding: 4px;
+}
+
 /* Game */
 
 #correct {

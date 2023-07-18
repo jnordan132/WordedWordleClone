@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Modal from "react-modal";
 import { BsFillBarChartFill, BsXCircle } from "react-icons/bs";
+import { AppContext } from "../../App";
+
+Modal.setAppElement("#root");
 
 function StatsModal() {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const { modalIsOpen, setIsOpen } = useContext(AppContext);
 
   const openModal = () => {
     setIsOpen(true);
@@ -11,6 +14,10 @@ function StatsModal() {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const handleClickReplay = () => {
+    window.location.reload();
   };
 
   if (localStorage.getItem("stats")) {
@@ -53,6 +60,11 @@ function StatsModal() {
                 <p></p>
               </li>
             </ul>
+            <div className="btnDiv">
+              <button className="playBtn" onClick={handleClickReplay}>
+                Play Again
+              </button>
+            </div>
           </section>
         </Modal>
       </div>

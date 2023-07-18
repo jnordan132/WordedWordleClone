@@ -20,6 +20,7 @@ function App() {
   const [disabledValues, setDisabledValues] = useState<string[]>([]);
   const [neededValues, setNeededValues] = useState<string[]>([]);
   const [correctValues, setCorrectValues] = useState<string[]>([]);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 
   const notify = (message: string, hasError = false) => {
     if (hasError) {
@@ -112,6 +113,9 @@ function App() {
         timesSolved: prevPlayerObj.timesSolved + 1,
       };
       localStorage.setItem("stats", JSON.stringify(newPlayerObj));
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 1500);
     }
   };
 
@@ -129,8 +133,7 @@ function App() {
         pauseOnFocusLoss
         pauseOnHover
       />
-      <Header />
-      <br />
+
       <main>
         <AppContext.Provider
           value={{
@@ -148,8 +151,12 @@ function App() {
             onDelete,
             onEnter,
             correctWord,
+            modalIsOpen,
+            setIsOpen,
           }}
         >
+          <Header />
+          <br />
           <Grid />
           <br />
           <Board />

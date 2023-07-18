@@ -2,6 +2,8 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { BsInfoCircle, BsXCircle } from "react-icons/bs";
 
+Modal.setAppElement("#root");
+
 function InfoModal() {
   const [modalIsOpen, setIsOpen] = useState(false);
 
