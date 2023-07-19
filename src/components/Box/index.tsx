@@ -22,7 +22,7 @@ function Box({ attempt, position }: BoxProps) {
     !correct &&
     value !== "" &&
     correctWord.includes(value) &&
-    !board[attempt].includes(value);
+    board[attempt].includes(value);
   const valueState =
     currentAttempt.attempt > attempt
       ? correct

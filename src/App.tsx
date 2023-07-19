@@ -43,7 +43,6 @@ function App() {
   };
 
   const correctWord = word;
-  // console.log(correctWord);
 
   useEffect(() => {
     generateWords().then(({ newSet, wordForThisGame }) => {
